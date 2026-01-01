@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Skin Life - Premium Aesthetic Clinic in Kochi, Kerala. Expert skin and hair treatments.">
+    <title>The Skin Life | Premium Aesthetic Clinic</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* RESET & VARIABLES */
+        :root {
+            --primary-green: #2B4C32;
+            --accent-gold: #D4AF37;
+            --text-dark: #1a1a1a;
+            --text-grey: #5a5a5a;
+            --bg-white: #ffffff;
+            --bg-soft: #fcfcfc;
+            --font-serif: 'Cormorant Garamond', serif; 
+            --font-sans: 'Montserrat', sans-serif;
+            --radius: 20px; 
+            --radius-sm: 10px;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 { 
+            font-family: var(--font-serif); 
+            color: var(--primary-green); 
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* HELPER CLASSES */
+        .gold-text { 
+            color: var(--accent-gold); 
+            font-style: italic; 
+        }
+        
+        .divider { 
+            width: 60px; 
+            height: 2px; 
+            background-color: var(--accent-gold); 
+            margin: 1.5rem 0; 
+        }
+        
+        .divider-center { 
+            margin: 1.5rem auto; 
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--primary-green);
+            background: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-sans);
+            border-radius: 50px;
+        }
+        
+        .btn:hover { 
+            background: transparent; 
+            color: var(--primary-green); 
+            transform: translateY(-2px);
+        }
+        
+        .btn-gold { 
+            background: var(--accent-gold); 
+            border-color: var(--accent-gold); 
+            color: white; 
+        }
+        
+        .btn-gold:hover { 
+            background: transparent; 
+            color: var(--accent-gold); 
+        }
+
+        /* POPUP STYLES (GENERAL) */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 3rem;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            border-radius: var(--radius);
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border: 1px solid var(--accent-gold);
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-grey);
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 10;
+        }
+
+        .close-popup:hover { color: var(--primary-green); }
+
+        .popup-content h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .popup-discount { font-size: 4rem; color: var(--accent-gold); line-height: 1; font-family: var(--font-serif); font-weight: 700; margin: 1rem 0; }
+
+        /* DOCTOR & TREATMENT POPUP STYLES */
+        .doc-popup-content, .treatment-popup-content {
+            max-width: 900px; 
+            padding: 0;
+            overflow: hidden;
+            text-align: left;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .doc-image-col {
+            flex: 1;
+            min-height: 400px;
+        }
+
+        .doc-image-col img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .doc-info-col {
+            flex: 1.5;
+            padding: 3rem;
+            overflow-y: auto;
+            max-height: 80vh;
+            background: #fff;
+        }
+
+        .doc-credentials {
+            font-size: 0.9rem;
+            color: var(--text-grey);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .doc-bio, .treatment-desc {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .treatment-price {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            font-family: var(--font-serif);
+            font-weight: 600;
+            margin: 1rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 5%; 
+            background: rgba(255, 255, 255, 0.98);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #f0f0f0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            min-height: 100px; 
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-logo-icon {
+            height: 70px; 
+            width: auto;
+        }
+
+        .nav-brand-img {
+            height: 80px; 
+            width: auto;
+            display: block;
+        }
+        
+        .nav-links { 
+            display: flex; 
+            gap: 2rem; 
+            align-items: center; 
+        }
+        
+        .nav-links a { 
+            text-decoration: none; 
+            color: #333; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            transition: color 0.3s ease; 
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem 8%;
+            background: linear-gradient(to right, rgba(255,255,255,0.95) 40%, rgba(255,255,255,0.3)), url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .hero-content { 
+            max-width: 650px; 
+        }
+        
+        .hero h1 { 
+            font-size: 4.5rem; 
+            line-height: 1.1; 
+            margin-bottom: 1.5rem; 
+        }
+        
+        .hero-subtitle {
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            display: block;
+            font-weight: 600;
+            color: var(--text-grey);
+        }
+        
+        /* ABOUT SECTION */
+        .about-section {
+            padding: 6rem 8%;
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            background: white;
+            position: relative;
+        }
+        
+        .watermark-logo {
+            position: absolute;
+            top: 50%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.03;
+            width: 400px;
+            pointer-events: none;
+        }
+        
+        .about-images { 
+            flex: 1; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+        }
+        
+        .about-images img { 
+            width: 100%; 
+            border-radius: var(--radius); 
+            object-fit: cover; 
+            height: 350px;
+            display: block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-images img:nth-child(2) {
+            margin-top: 40px; 
+        }
+        
+        .about-text { 
+            flex: 1; 
+            z-index: 2; 
+        }
+        
+        .about-text h2 {
+            margin-bottom: 1.5rem;
+            font-size: 3.5rem;
+            line-height: 1.2;
+        }
+
+        /* NEW MVV SECTION STYLES */
+        .mvv-wrapper {
+            padding: 6rem 8%;
+            background: var(--bg-soft);
+            text-align: center;
+        }
+
+        /* Mission/Vision - Side by Side Layout */
+        .mv-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mv-card-item {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+
+        .mv-card-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .mv-card-item h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .mv-card-item p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* Core Values Horizontal Row */
+        .values-row {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .value-item {
+            flex: 1;
+            min-width: 150px;
+            max-width: 250px;
+            background: white;
+            padding: 1.5rem 1rem;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-top: 3px solid var(--accent-gold);
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: var(--bg-soft);
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+        }
+
+        .value-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        /* SERVICES SECTION */
+        .services-wrapper {
+            padding: 6rem 8%;
+            background: white; 
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services-header h2 { font-size: 3.5rem; }
+
+        /* Category Tabs */
+        .category-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .cat-tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--bg-soft);
+            border: 1px solid #eee;
+            border-radius: var(--radius);
+            width: 140px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cat-tab:hover, .cat-tab.active {
+            background: var(--primary-green);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(43, 76, 50, 0.2);
+            border-color: var(--primary-green);
+        }
+
+        .cat-tab i {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .cat-tab span {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--text-dark);
+            transition: color 0.3s;
+        }
+
+        .cat-tab:hover i, .cat-tab:hover span,
+        .cat-tab.active i, .cat-tab.active span {
+            color: white;
+        }
+
+        /* Treatment Grid */
+        .treatment-list-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            min-height: 300px;
+        }
+
+        .treatment-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid #eee;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            /* UNIFORM HEIGHT FIX */
+            height: 110px; 
+            min-height: 110px;
+        }
+
+        .treatment-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .offer-bubble {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent-gold);
+            color: white;
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-bottom-left-radius: 8px;
+            font-weight: 600;
+        }
+
+        .offer-bubble.red {
+            background: #d9534f; /* Special color for 50% off */
+        }
+
+        .t-name {
+            font-weight: 500;
+            color: #333;
+            /* Ensure text wraps nicely */
+            line-height: 1.3;
+            padding-right: 20px;
+        }
+
+        .t-arrow {
+            color: var(--accent-gold);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s;
+        }
+
+        .treatment-card:hover .t-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* TESTIMONIALS SECTION */
+        .testimonials-section {
+            padding: 6rem 0;
+            background: var(--bg-soft);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .testimonials-header { margin-bottom: 4rem; }
+        .testimonials-header h2 { font-size: 3rem; }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .testimonial-card {
+            position: absolute;
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            width: 500px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+            border: 1px solid #f0f0f0;
+        }
+
+        .testimonial-card.active {
+            opacity: 1;
+            transform: scale(1) translateX(0);
+            z-index: 2;
+            filter: blur(0);
+        }
+
+        .testimonial-card.prev {
+            opacity: 0.5;
+            transform: scale(0.8) translateX(-350px);
+            z-index: 1;
+            filter: blur(2px);
+            cursor: pointer;
+        }
+
+        .testimonial-card.next {
+            opacity: 0.5;
+            transform: scale(0.8) translateX(350px);
+            z-index: 1;
+            filter: blur(2px);
+            cursor: pointer;
+        }
+
+        .t-quote { font-size: 1.1rem; font-style: italic; color: #555; margin-bottom: 1.5rem; }
+        .t-author { font-weight: 600; color: var(--primary-green); }
+        .t-treatment { font-size: 0.8rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* LOCATION SECTION */
+        .location-section {
+            padding: 6rem 8%;
+            background: white;
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .loc-info {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .loc-info h2 { font-size: 3rem; margin-bottom: 1rem; }
+
+        .loc-details { margin-top: 2rem; }
+        .loc-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+        .loc-row i { color: var(--accent-gold); font-size: 1.2rem; margin-top: 5px; }
+        
+        .loc-map-container {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .loc-map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            pointer-events: auto; /* ENABLE INTERACTION */
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary-green);
+            color: white;
+            padding: 2rem 5%; /* Reduced Padding */
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Ensures vertical alignment */
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        /* Col 1: Brand */
+        .footer-brand {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            align-items: center; /* Vertically center aligned */
+            justify-content: flex-start; /* Left aligned */
+            gap: 10px; /* Reduced Gap as requested */
+        }
+
+        /* Separate styles for the logo icon and branding image */
+        .footer-brand .footer-logo-icon {
+            height: 70px; /* Adjust size as needed, similar to top navbar */
+            width: auto;
+        }
+
+        .footer-brand .footer-brand-img {
+            height: 80px; /* Adjust size as needed */
+            width: auto;
+            display: block;
+        }
+
+        /* Col 2: Contact */
+        .footer-contact {
+            text-align: right; /* Aligns the container to the right side of the footer */
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* Aligns items inside to the right */
+        }
+
+        /* New Inner Wrapper for Alignment */
+        .footer-contact-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Force Left Alignment for Title & Content */
+        }
+
+        .footer-contact h3 {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-serif);
+            display: block;
+            /* Removed centered text align to allow natural left align in block */
+        }
+
+        .footer-contact-details {
+            /* Container for contact details to be left aligned relative to themselves but right aligned in footer */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Left align text inside this block */
+            width: 100%;
+        }
+
+        /* NEW FOOTER LINK STYLES */
+        .contact-link-wrapper {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            width: 100%;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .contact-link-wrapper:hover {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: flex-start; /* Left align content */
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            align-items: center;
+            width: 100%; /* Take full width of container */
+        }
+
+        .contact-row i {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            width: 20px; /* Fixed width for alignment */
+            text-align: center;
+            transition: color 0.3s;
+        }
+        
+        /* INVERTED PHONE ICON */
+        .fa-phone-alt.inverted-icon {
+            transform: scaleX(-1);
+            display: inline-block;
+        }
+
+        .contact-row span {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .contact-link-wrapper:hover .contact-row span {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .contact-link-wrapper:hover .contact-row i {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-bottom: 0;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-brand-img { height: 50px; }
+            .nav-logo-icon { height: 40px; }
+            nav { min-height: 80px; }
+
+            .about-section { flex-direction: column; padding: 4rem 5%; }
+            .hero h1 { font-size: 3rem; }
+            .about-images { grid-template-columns: 1fr; margin-bottom: 2rem; }
+            .about-images img:nth-child(2) { margin-top: 0; }
+            
+            .popup-content { padding: 2rem; width: 85%; }
+            .popup-discount { font-size: 3rem; }
+
+            .doc-popup-content, .treatment-popup-content { flex-direction: column; overflow-y: auto; max-height: 85vh; }
+            .doc-image-col { min-height: 250px; flex: none; }
+            .doc-info-col { padding: 2rem 1.5rem; }
+            
+            /* Footer Responsive */
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-brand { display: flex; justify-content: center; flex-direction: column; gap: 10px; align-items: center; }
+            .footer-contact { text-align: center; align-items: center; width: 100%; }
+            .footer-contact-details { align-items: center; }
+            .contact-row { justify-content: center; }
+            .contact-link-wrapper:hover { transform: translateY(-3px); }
+            
+            /* Reset wrapper alignment on mobile */
+            .footer-contact-block { align-items: center; }
+
+            .testimonial-card.prev, .testimonial-card.next { display: none; }
+            .testimonial-card { width: 90%; }
+            .carousel-container { height: 350px; }
+            .loc-map-container { min-height: 300px; }
+            
+            .mv-grid-container { grid-template-columns: 1fr; }
+            .values-row { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- OFFER POPUP (LAUNCH OFFER) -->
+    <div class="popup-overlay" id="offerPopup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup('offerPopup')">×</span>
+            <p style="letter-spacing: 2px; text-transform: uppercase; font-size: 1rem; color: var(--primary-green); font-weight: 600;">LAUNCH OFFER</p>
+            <div class="popup-discount">20% OFF</div>
+            <h2 style="font-size: 1.8rem;">Valid till Jan 31st</h2>
+            <div class="divider divider-center"></div>
+            <p>Experience premium care at The Skin Life. Book your appointment today.</p>
+            <a href="https://wa.me/919544136666?text=Hello%2C%20I%20would%20like%20to%20claim%20the%2020%25%20Launch%20Offer." class="btn btn-gold" onclick="closePopup('offerPopup')">Claim Now</a>
+        </div>
+    </div>
+
+    <!-- DOCTOR INFO POPUP -->
+    <div class="popup-overlay" id="docPopup">
+        <div class="popup-content doc-popup-content">
+            <span class="close-popup" onclick="closePopup('docPopup')">×</span>
+            <div class="doc-image-col">
+                <img src="Doctors_Photo.png" alt="Dr. Geethu Tellus">
+            </div>
+            <div class="doc-info-col">
+                <h3 style="color: var(--primary-green); font-size: 2.2rem; margin-bottom: 0.2rem;">Dr. Geethu Tellus</h3>
+                <div class="divider" style="margin: 1rem 0;"></div>
+                <div class="doc-credentials">
+                    <p><i class="fas fa-graduation-cap"></i> MBBS, FAM (AAAM Dubai)</p>
+                    <p><i class="fas fa-certificate"></i> Dip. Aesthetic Medicine (IATAM Hyderabad)</p>
+                </div>
+                <div class="doc-bio">
+                    <p>Dr. Geethu Tellus is a distinguished expert in aesthetic medicine with a strong foundation in clinical care. She graduated from <strong>Navodaya Medical College, Raichur</strong>.</p>
+                    <p>With over 8 years of experience as a Senior SICU Medical Officer at <strong>Rajagiri Hospital</strong>, she possesses deep medical expertise. She further specialized by completing a Certificate Course in Palliative Medicine from Gov. District Hospital, Ernakulam.</p>
+                    <p>Her passion for aesthetics led her to pursue a <strong>Fellowship in Aesthetic Medicine</strong> from the prestigious American Academy of Aesthetic Medicine (AAAM), Dubai, and a <strong>Diploma in Aesthetic Medicine and Cosmetology</strong> from IATAM, Hyderabad.</p>
+                </div>
+                <a href="https://wa.me/919544136666?text=Hello%2C%20I%20would%20like%20to%20book%20a%20consultation%20with%20Dr.%20Geethu." class="btn btn-gold" style="margin-top: 1rem;">Book Consultation</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DYNAMIC TREATMENT POPUP -->
+    <div class="popup-overlay" id="treatmentPopup">
+        <div class="popup-content treatment-popup-content">
+            <span class="close-popup" onclick="closePopup('treatmentPopup')">×</span>
+            <div class="doc-image-col">
+                <!-- Image source will be set via JS -->
+                <img id="t-popup-img" src="" alt="Treatment Image">
+            </div>
+            <div class="doc-info-col">
+                <h3 id="t-popup-title" style="color: var(--primary-green); font-size: 2.2rem; margin-bottom: 0.2rem;">Treatment Name</h3>
+                <div id="t-popup-offer" style="color: var(--accent-gold); font-weight: bold; margin-bottom: 1rem;"></div>
+                
+                <div class="treatment-desc">
+                    <p id="t-popup-desc">Scientific description goes here.</p>
+                </div>
+
+                <div class="treatment-price" id="t-popup-price">
+                    ₹0000
+                </div>
+                
+                <!-- Updated Link with preset message for treatment -->
+                <a id="t-popup-btn" href="#" class="btn btn-gold" style="margin-top: 1rem;">Book This Treatment</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-logo">
+            <img src="logo.png" alt="Logo" class="nav-logo-icon">
+            <img src="brandname.png" alt="The Skin Life" class="nav-brand-img">
+        </div>
+        <div class="nav-links">
+            <a href="#about">Philosophy</a>
+            <!-- Treatments and Charges merged in functionality -->
+            <a href="#services">Treatments</a>
+            <a href="#services">Charges</a> 
+            <a href="#testimonials">Testimonials</a>
+            <a href="#visit-us">Location</a>
+            <a href="https://wa.me/919544136666?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment." class="btn btn-gold">Book Appointment</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-subtitle">Est. 2025 • Kochi</span>
+            <h1>Redefining Beauty<br>Through <span class="gold-text">Science.</span></h1>
+            <div class="divider"></div>
+            <p>Welcome to Kochi's premier aesthetic destination. We blend advanced dermatology with holistic care.</p>
+            <a href="#services" class="btn">View Treatments</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <img src="logo.png" alt="Watermark" class="watermark-logo">
+        <div class="about-images">
+            <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070&auto=format&fit=crop" alt="Modern clinic interior">
+            <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?q=80&w=2073&auto=format&fit=crop" alt="Skincare treatment">
+        </div>
+        <div class="about-text">
+            <h2>Every skin has a <span class="gold-text">story.</span></h2>
+            <p style="font-weight: 600;">At THE SKIN LIFE, we believe that every skin deserves the best and here we are to make your skin glow.</p>
+            <p>Welcome to THE SKIN LIFE, One of the best skin and hair clinic in Kerala. We specialize in premium quality skin and hair treatments at an affordable price.</p>
+            <p>We understand every skin has its own beauty which is why we offer customized skin care and aesthetic treatment plans with advanced technology, keeping our client's need as our top priority. With a compassionate doctor and expert staffs, we strive to provide our clients with highest level of satisfaction.</p>
+            <p>Whether you are looking to treat hair fall, acne, pigmentation, aging signs or to simply maintain your skin's natural glow, we deliver safe and effective treatments. We help you feel confident in your skin through expert care.</p>
+            <button onclick="openPopup('docPopup')" class="btn btn-gold" style="margin-top: 1rem;">Meet Our Chief Doctor</button>
+        </div>
+    </section>
+
+    <!-- NEW MISSION VISION VALUES SECTION -->
+    <section class="mvv-wrapper">
+        
+        <!-- Mission & Vision Cards (Visible Side-by-Side) -->
+        <div class="mv-grid-container">
+            <div class="mv-card-item">
+                <i class="fas fa-bullseye" style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 1rem;"></i>
+                <h3>Our Mission</h3>
+                <p>"To provide personalized skin care at affordable price,that helps every client feel confident healthy and radiant."</p>
+            </div>
+            <div class="mv-card-item">
+                <i class="fas fa-eye" style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 1rem;"></i>
+                <h3>Our Vision</h3>
+                <p>"To make healthy and glowing skin accessible and available to everyone"</p>
+            </div>
+        </div>
+
+        <!-- Heading for Core Values -->
+        <h3 style="margin: 3rem 0 2rem 0; font-size: 2.5rem; color: var(--primary-green);">Our Core Values</h3>
+
+        <!-- Core Values Row -->
+        <div class="values-row">
+            <div class="value-item">
+                <span class="value-icon"><i class="fas fa-users"></i></span>
+                <h4>Client Oriented</h4>
+            </div>
+            <div class="value-item">
+                <span class="value-icon"><i class="fas fa-shield-alt"></i></span>
+                <h4>Client Safety</h4>
+            </div>
+            <div class="value-item">
+                <span class="value-icon"><i class="fas fa-user-tie"></i></span>
+                <h4>Professionalism</h4>
+            </div>
+            <div class="value-item">
+                <span class="value-icon"><i class="fas fa-heart"></i></span>
+                <h4>Compassion</h4>
+            </div>
+            <div class="value-item">
+                <span class="value-icon"><i class="fas fa-fingerprint"></i></span>
+                <h4>Personalization</h4>
+            </div>
+            <div class="value-item">
+                <span class="value-icon"><i class="fas fa-star"></i></span>
+                <h4>Quality</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services-wrapper">
+        <div class="services-header">
+            <h2>Treatments & Charges</h2>
+            <div class="divider divider-center"></div>
+            <p>Select a category to view treatments. Click on any treatment to see pricing and details.</p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="category-container" id="categoryTabs">
+            <!-- Populated via JS -->
+        </div>
+
+        <!-- Treatment List -->
+        <div class="treatment-list-container" id="treatmentGrid">
+            <!-- Populated via JS -->
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="testimonials-header">
+            <h2>Client Stories</h2>
+            <div class="divider divider-center"></div>
+        </div>
+        
+        <div class="carousel-container">
+            <!-- Populated via JS -->
+            <div class="testimonial-card prev" id="card-0">
+                <p class="t-quote">"The laser hair reduction was painless and the results are incredible after just two sessions."</p>
+                <div class="t-author">Anjali Menon</div>
+                <div class="t-treatment">Laser Hair Reduction</div>
+            </div>
+            <div class="testimonial-card active" id="card-1">
+                <p class="t-quote">"Dr. Geethu's expertise is unmatched. The Korean Glass Skin facial gave me a glow I've never had before."</p>
+                <div class="t-author">Sarah John</div>
+                <div class="t-treatment">Korean Glass Skin</div>
+            </div>
+            <div class="testimonial-card next" id="card-2">
+                <p class="t-quote">"Professional, clean, and luxurious. The PRP treatment for my hair loss has shown great improvements."</p>
+                <div class="t-author">Rahul K.</div>
+                <div class="t-treatment">PRP Therapy</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visit-us" class="location-section">
+        <div class="loc-info">
+            <h2>Visit Us</h2>
+            <p>Experience luxury aesthetic care in the heart of Kochi.</p>
+            <div class="loc-details">
+                <div class="loc-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>The Skin Life</strong><br>
+                        Panampilly Nagar,<br>
+                        Kochi, Kerala 682020
+                    </div>
+                </div>
+                <div class="loc-row">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Hours</strong><br>
+                        Mon - Sat: 10:00 AM - 7:00 PM<br>
+                        Sunday: By Appointment
+                    </div>
+                </div>
+                <a href="https://www.google.com/maps/search/Panampilly+Nagar,+Kochi" target="_blank" class="btn btn-gold">Get Directions</a>
+            </div>
+        </div>
+        
+        <div class="loc-map-container">
+            <!-- Map with interaction enabled -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.610582239339!2d76.2974!3d9.9657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0872c638202573%3A0x70d8a7c264775d71!2sPanampilly%20Nagar%2C%20Kochi%2C%20Kerala!5e0!3m2!1sen!2sin!4v1703600000000!5m2!1sen!2sin" 
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <!-- COLUMN 1: BRAND IMAGE WITH LOGO -->
+            <div class="footer-brand">
+                <img src="SL_grn_bg.png" alt="TSL Icon" class="footer-logo-icon">
+                <img src="branding_grn_bg.png" alt="THE SKIN LIFE" class="footer-brand-img">
+            </div>
+
+            <!-- COLUMN 2: CONTACT -->
+            <div class="footer-contact">
+                <!-- Wrapper for alignment -->
+                <div class="footer-contact-block">
+                    <h3>Contact Us</h3>
+                    
+                    <div class="footer-contact-details">
+                        
+                        <!-- PHONE -->
+                        <a href="tel:+919746698366" class="contact-link-wrapper">
+                            <div class="contact-row">
+                                <i class="fas fa-phone-alt inverted-icon"></i>
+                                <span>+91 97466 98366</span>
+                            </div>
+                        </a>
+                        
+                        <!-- WHATSAPP with preset message -->
+                        <a href="https://wa.me/919544136666?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20an%20appointment%20at%20The%20Skin%20Life." target="_blank" class="contact-link-wrapper">
+                            <div class="contact-row">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>+91 95441 36666</span>
+                            </div>
+                        </a>
+
+                        <!-- EMAIL with preset subject and body -->
+                        <a href="mailto:theskinlife2025@gmail.com?subject=Inquiry%20from%20Website&body=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20treatments." class="contact-link-wrapper">
+                            <div class="contact-row">
+                                <i class="fas fa-envelope"></i>
+                                <span>theskinlife2025@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <!-- INSTAGRAM Profile Link (Corrected) -->
+                        <a href="https://www.instagram.com/the_skinlife" target="_blank" class="contact-link-wrapper">
+                            <div class="contact-row">
+                                <i class="fab fa-instagram"></i>
+                                <span>@the_skinlife</span>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 The Skin Life. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- DATA OBJECTS (UPDATED OFFERS) ---
+        // Note: Logic added to render function to auto-add 20% off if no other offer exists
+        const treatments = {
+            hair: {
+                title: "Hair Treatments",
+                icon: "fa-solid fa-leaf",
+                items: [
+                    { name: "PRP Therapy", price: "₹2,000", offer: "50% Off: ₹2,500 for 2", desc: "Platelet-Rich Plasma therapy stimulates hair follicles using your own growth factors to promote density and reduce hair fall.", img: "https://images.unsplash.com/photo-1628147171542-5c029471131a?q=80&w=2070" },
+                    { name: "GFC Treatment", price: "₹3,000", offer: "50% Off: ₹3,500 for 2", desc: "Growth Factor Concentrate (GFC) is an advanced non-surgical therapy derived from your blood platelets for superior hair restoration.", img: "https://images.unsplash.com/photo-1595867383637-293836968038?q=80&w=2070" },
+                    { name: "Mesotherapy", price: "₹3,500 / Session", offer: "20% Off", desc: "Micro-injections of vitamins, enzymes, and hormones into the mesoderm to rejuvenate the scalp and stimulate hair growth.", img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080" },
+                    { name: "Injections", price: "₹5,000", offer: "20% Off", desc: "Targeted clinical injections designed to halt hair thinning and promote robust follicular health.", img: "https://images.unsplash.com/photo-1516069677934-cc330058e577?q=80&w=2070" },
+                    { name: "Hanheal Hair Filler", price: "₹7,500 + GST", offer: "20% Off", desc: "A peptide-based hair filler complex that strengthens hair cells and revitalizes the scalp dermis.", img: "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?q=80&w=2070" }
+                ]
+            },
+            laser: {
+                title: "Laser Hair Reduction",
+                icon: "fa-solid fa-bolt",
+                items: [
+                    { name: "Face LHR", price: "₹3,500 + GST", offer: "20% Off", desc: "Advanced diode laser technology targeting facial hair follicles for smooth, permanent reduction.", img: "https://images.unsplash.com/photo-1588005886295-a4b0058c679a?q=80&w=2074" },
+                    { name: "Underarms", price: "₹2,000 + GST", offer: "20% Off", desc: "Safe and effective hair reduction for the underarm area, preventing ingrown hairs and pigmentation.", img: "https://images.unsplash.com/photo-1505944270255-72b8c68c6a70?q=80&w=2070" },
+                    { name: "Full Body", price: "₹20,000 + GST", offer: "20% Off", desc: "Complete body hair reduction package using triple-wavelength laser for all skin types.", img: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070" },
+                    { name: "Upper Limb", price: "₹6,000 + GST", offer: "20% Off", desc: "Hair reduction for arms, ensuring smooth skin texture.", img: "https://images.unsplash.com/photo-1629841961427-047b0e14cb75?q=80&w=2070" },
+                    { name: "Only Forearms", price: "₹3,000 + GST", offer: "20% Off", desc: "Targeted laser treatment for forearms.", img: "https://images.unsplash.com/photo-1629841961427-047b0e14cb75?q=80&w=2070" },
+                    { name: "Chest / Male Chest", price: "₹3,000 / ₹4,000 + GST", offer: "20% Off", desc: "Defined contouring and hair reduction for the chest area.", img: "https://images.unsplash.com/photo-1597950228812-78d10d655649?q=80&w=2070" },
+                    { name: "Back", price: "₹6,000 + GST", offer: "20% Off", desc: "Full back hair reduction for a clean aesthetic.", img: "https://images.unsplash.com/photo-1597950228812-78d10d655649?q=80&w=2070" }
+                ]
+            },
+            pigmentation: {
+                title: "PICO & Pigmentation",
+                icon: "fa-regular fa-sun",
+                items: [
+                    { name: "Laser Toning (Face)", price: "₹4,000 + GST", offer: "20% Off", desc: "Q-switched laser treatment to break down pigmentation, treating acne scars and uneven skin tone.", img: "https://images.unsplash.com/photo-1552693673-1bf958298935?q=80&w=2073" },
+                    { name: "Melasma Treatment", price: "₹4,000 + GST", offer: "20% Off", desc: "Specialized protocol targeting deep dermal pigmentation and hormonal melanin deposits.", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070" },
+                    { name: "Tattoo Removal", price: "Starting ₹1,500 + GST", offer: "20% Off", desc: "Safe removal of unwanted tattoos using high-intensity light beams to break up ink particles.", img: "https://images.unsplash.com/photo-1595475207225-428b62bda831?q=80&w=2080" }
+                ]
+            },
+            facials: {
+                title: "Facials",
+                icon: "fa-solid fa-spa",
+                items: [
+                    { name: "Hydrafacial", price: "₹6,000 + GST", offer: "20% Off", desc: "The ultimate 3-step facial: Cleanse, Exfoliate, and Infuse with intensive serums.", img: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=2070" },
+                    { name: "Korean Glass Skin", price: "₹5,000 + GST", offer: "20% Off", desc: "Our signature protocol combining hydration, vitamins, and mild exfoliation for a translucent, glass-like glow.", img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070" },
+                    { name: "PRP Vampire Facial", price: "₹5,000 + GST", offer: "20% Off", desc: "Microneedling combined with PRP to stimulate collagen production and skin renewal.", img: "https://images.unsplash.com/photo-1598440947619-2c35fc9b90aa?q=80&w=2070" },
+                    { name: "Korean Facial", price: "₹4,000 + GST", offer: "20% Off", desc: "A multi-step regimen focusing on deep hydration and barrier repair.", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070" }
+                ]
+            },
+            peels: {
+                title: "Peels & Body",
+                icon: "fa-solid fa-flask",
+                items: [
+                    { name: "Yellow Peel", price: "₹3,000 + GST", offer: "20% Off", desc: "A progressive peel containing Retinoic Acid to treat acne, pigmentation, and photo-aging.", img: "https://images.unsplash.com/photo-1608248597279-f99d160bfbc8?q=80&w=2070" },
+                    { name: "Body Peel", price: "Starting ₹1,500", offer: "20% Off", desc: "Exfoliating treatments for body areas (Back, Arms) to remove tan and improve texture.", img: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=2073" },
+                    { name: "Eye Peels", price: "₹3,000 + GST", offer: "20% Off", desc: "Gentle chemical exfoliation specifically safe for the delicate under-eye area to treat dark circles.", img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070" }
+                ]
+            },
+            injectables: {
+                title: "Injectables",
+                icon: "fa-solid fa-syringe",
+                items: [
+                    { name: "GFC Face", price: "₹3,000 + GST", offer: "20% Off", desc: "Facial rejuvenation utilizing your own growth factors for tightening and brightness.", img: "https://images.unsplash.com/photo-1579165466741-7f35a4755657?q=80&w=2079" },
+                    { name: "Botox", price: "₹300 / Unit", offer: "20% Off", desc: "FDA-approved neuromodulator to smooth dynamic wrinkles and fine lines.", img: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?q=80&w=2070" },
+                    { name: "IV Glutathione", price: "₹1,700 / Session", offer: "20% Off", desc: "Intravenous antioxidant therapy for systemic skin brightening and detoxification.", img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080" },
+                    { name: "Under Eye HanHeal", price: "₹10,000 + GST", offer: "20% Off", desc: "Specialized filler treatment to restore volume and reduce hollows under the eyes.", img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070" }
+                ]
+            }
+        };
+
+        // --- POPUP LOGIC ---
+        function openPopup(id) {
+            document.getElementById(id).classList.add("active");
+        }
+
+        function closePopup(id) {
+            document.getElementById(id).classList.remove("active");
+        }
+
+        function openTreatmentPopup(item) {
+            document.getElementById('t-popup-title').innerText = item.name;
+            document.getElementById('t-popup-desc').innerText = item.desc;
+            document.getElementById('t-popup-price').innerText = item.price;
+            document.getElementById('t-popup-img').src = item.img;
+            
+            const offerDiv = document.getElementById('t-popup-offer');
+            if (item.offer) {
+                offerDiv.innerText = "Special: " + item.offer;
+                offerDiv.style.display = 'block';
+            } else {
+                offerDiv.style.display = 'none';
+            }
+            
+            // Update the Book This Treatment button with specific message
+            const btn = document.getElementById('t-popup-btn');
+            const message = encodeURIComponent(`Hello, I am interested in the ${item.name} treatment priced at ${item.price}.`);
+            btn.href = `https://wa.me/919544136666?text=${message}`;
+
+            openPopup('treatmentPopup');
+        }
+
+        // --- RENDER FUNCTIONS ---
+        function renderCategories() {
+            const container = document.getElementById('categoryTabs');
+            let first = true;
+            for (const [key, data] of Object.entries(treatments)) {
+                const tab = document.createElement('div');
+                tab.className = `cat-tab ${first ? 'active' : ''}`;
+                tab.onclick = () => switchCategory(key, tab);
+                tab.innerHTML = `<i class="${data.icon}"></i><span>${data.title}</span>`;
+                container.appendChild(tab);
+                if (first) {
+                    renderTreatmentList(key);
+                    first = false;
+                }
+            }
+        }
+
+        function renderTreatmentList(key) {
+            const grid = document.getElementById('treatmentGrid');
+            grid.innerHTML = '';
+            treatments[key].items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'treatment-card';
+                card.onclick = () => openTreatmentPopup(item);
+                
+                // Logic to set bubble color based on offer percentage
+                let offerClass = 'offer-bubble';
+                if(item.offer.includes('50%')) offerClass += ' red';
+
+                let offerHtml = item.offer ? `<div class="${offerClass}">${item.offer.split(':')[0]}</div>` : '';
+                
+                card.innerHTML = `
+                    <span class="t-name">${item.name}</span>
+                    <i class="fas fa-arrow-right t-arrow"></i>
+                    ${offerHtml}
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function switchCategory(key, element) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.cat-tab').forEach(el => el.classList.remove('active'));
+            // Add active to clicked
+            element.classList.add('active');
+            // Render list
+            renderTreatmentList(key);
+        }
+
+        // --- TESTIMONIALS CAROUSEL ---
+        let currentTestimonial = 1; // Start at center
+        const totalTestimonials = 3;
+
+        function rotateTestimonials(direction) {
+            const cards = document.querySelectorAll('.testimonial-card');
+            
+            // Remove all classes
+            cards.forEach(c => c.className = 'testimonial-card');
+
+            if (direction === 'next') {
+                currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+            } else if (direction === 'prev') {
+                currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+            }
+
+            // Calculate indices
+            let prevIndex = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+            let nextIndex = (currentTestimonial + 1) % totalTestimonials;
+
+            // Apply classes
+            cards[prevIndex].classList.add('prev');
+            cards[currentTestimonial].classList.add('active');
+            cards[nextIndex].classList.add('next');
+        }
+
+        // Auto rotate
+        setInterval(() => rotateTestimonials('next'), 5000);
+
+        // Keyboard nav
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') rotateTestimonials('next');
+            if (e.key === 'ArrowLeft') rotateTestimonials('prev');
+        });
+
+        // Click nav
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.testimonial-card.prev')) rotateTestimonials('prev');
+            if (e.target.closest('.testimonial-card.next')) rotateTestimonials('next');
+        });
+
+        // --- INITIALIZATION ---
+        window.onload = function() {
+            setTimeout(() => openPopup('offerPopup'), 1000);
+            renderCategories();
+        };
+    </script>
+
+</body>
+</html>
