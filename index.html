@@ -229,7 +229,7 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 5px;
         }
         
         .nav-logo-icon {
@@ -683,7 +683,7 @@
             display: flex;
             align-items: center; /* Vertically center aligned */
             justify-content: flex-start; /* Left aligned */
-            gap: 10px; /* Reduced Gap as requested */
+            gap: .5px; /* Reduced Gap as requested */
         }
 
         /* Separate styles for the logo icon and branding image */
@@ -1023,9 +1023,9 @@
         <div class="carousel-container">
             <!-- Populated via JS -->
             <div class="testimonial-card prev" id="card-0">
-                <p class="t-quote">"The laser hair reduction was painless and the results are incredible after just two sessions."</p>
-                <div class="t-author">Anjali Menon</div>
-                <div class="t-treatment">Laser Hair Reduction</div>
+                <p class="t-quote">"I underwent PRP treatment here and had an excellent experience with outstanding service and professionalism."</p>
+                <div class="t-author">Kichu Tellus</div>
+                <div class="t-treatment">PRP Treatment</div>
             </div>
             <div class="testimonial-card active" id="card-1">
                 <p class="t-quote">"Dr. Geethu's expertise is unmatched. The Korean Glass Skin facial gave me a glow I've never had before."</p>
@@ -1033,9 +1033,9 @@
                 <div class="t-treatment">Korean Glass Skin</div>
             </div>
             <div class="testimonial-card next" id="card-2">
-                <p class="t-quote">"Professional, clean, and luxurious. The PRP treatment for my hair loss has shown great improvements."</p>
+                <p class="t-quote">"Professional, clean, and luxurious. The Mesotherapy treatment for my hair loss has shown great improvements."</p>
                 <div class="t-author">Rahul K.</div>
-                <div class="t-treatment">PRP Therapy</div>
+                <div class="t-treatment">Mesotherapy</div>
             </div>
         </div>
     </section>
@@ -1061,14 +1061,22 @@
                         Sunday: By Appointment
                     </div>
                 </div>
-                <a href="https://www.google.com/maps/search/Panampilly+Nagar,+Kochi" target="_blank" class="btn btn-gold">Get Directions</a>
+                
+                <a href="https://www.google.com/maps/search/?api=1&query=The+Skin+Life+Panampilly+Nagar+Kochi" target="_blank" class="btn btn-gold">Get Directions</a>
             </div>
         </div>
         
         <div class="loc-map-container">
-            <!-- Map with interaction enabled -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.610582239339!2d76.2974!3d9.9657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0872c638202573%3A0x70d8a7c264775d71!2sPanampilly%20Nagar%2C%20Kochi%2C%20Kerala!5e0!3m2!1sen!2sin!4v1703600000000!5m2!1sen!2sin" 
-            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe 
+                width="100%" 
+                height="100%" 
+                id="gmap_canvas" 
+                src="https://maps.google.com/maps?q=The%20Skin%20Life%20Panampilly%20Nagar%20Kochi&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                frameborder="0" 
+                scrolling="no" 
+                marginheight="0" 
+                marginwidth="0">
+            </iframe>
         </div>
     </section>
 
@@ -1138,11 +1146,11 @@
                 title: "Hair Treatments",
                 icon: "fa-solid fa-leaf",
                 items: [
-                    { name: "PRP Therapy", price: "₹2,000", offer: "50% Off: ₹2,500 for 2", desc: "Platelet-Rich Plasma therapy stimulates hair follicles using your own growth factors to promote density and reduce hair fall.", img: "https://images.unsplash.com/photo-1628147171542-5c029471131a?q=80&w=2070" },
-                    { name: "GFC Treatment", price: "₹3,000", offer: "50% Off: ₹3,500 for 2", desc: "Growth Factor Concentrate (GFC) is an advanced non-surgical therapy derived from your blood platelets for superior hair restoration.", img: "https://images.unsplash.com/photo-1595867383637-293836968038?q=80&w=2070" },
-                    { name: "Mesotherapy", price: "₹3,500 / Session", offer: "20% Off", desc: "Micro-injections of vitamins, enzymes, and hormones into the mesoderm to rejuvenate the scalp and stimulate hair growth.", img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080" },
+                    { name: "PRP Therapy", price: "₹3,000", offer: "", desc: "Platelet-Rich Plasma therapy stimulates hair follicles using your own growth factors to promote density and reduce hair fall.", img: "https://images.unsplash.com/photo-1628147171542-5c029471131a?q=80&w=2070" },
+                    { name: "GFC Treatment", price: "₹4,000", offer: "", desc: "Growth Factor Concentrate (GFC) is an advanced non-surgical therapy derived from your blood platelets for superior hair restoration.", img: "https://images.unsplash.com/photo-1595867383637-293836968038?q=80&w=2070" },
+                    { name: "Normal Mesotherapy", price: "₹3,500 / Session", offer: "20% Off", desc: "Micro-injections of vitamins, enzymes, and hormones into the mesoderm to rejuvenate the scalp and stimulate hair growth.", img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080" },
                     { name: "Injections", price: "₹5,000", offer: "20% Off", desc: "Targeted clinical injections designed to halt hair thinning and promote robust follicular health.", img: "https://images.unsplash.com/photo-1516069677934-cc330058e577?q=80&w=2070" },
-                    { name: "Hanheal Hair Filler", price: "₹7,500 + GST", offer: "20% Off", desc: "A peptide-based hair filler complex that strengthens hair cells and revitalizes the scalp dermis.", img: "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?q=80&w=2070" }
+                    { name: "Hair Filler", price: "₹7,500 + GST", offer: "20% Off", desc: "A peptide-based hair filler complex that strengthens hair cells and revitalizes the scalp dermis.", img: "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?q=80&w=2070" }
                 ]
             },
             laser: {
@@ -1154,8 +1162,11 @@
                     { name: "Full Body", price: "₹20,000 + GST", offer: "20% Off", desc: "Complete body hair reduction package using triple-wavelength laser for all skin types.", img: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070" },
                     { name: "Upper Limb", price: "₹6,000 + GST", offer: "20% Off", desc: "Hair reduction for arms, ensuring smooth skin texture.", img: "https://images.unsplash.com/photo-1629841961427-047b0e14cb75?q=80&w=2070" },
                     { name: "Only Forearms", price: "₹3,000 + GST", offer: "20% Off", desc: "Targeted laser treatment for forearms.", img: "https://images.unsplash.com/photo-1629841961427-047b0e14cb75?q=80&w=2070" },
-                    { name: "Chest / Male Chest", price: "₹3,000 / ₹4,000 + GST", offer: "20% Off", desc: "Defined contouring and hair reduction for the chest area.", img: "https://images.unsplash.com/photo-1597950228812-78d10d655649?q=80&w=2070" },
-                    { name: "Back", price: "₹6,000 + GST", offer: "20% Off", desc: "Full back hair reduction for a clean aesthetic.", img: "https://images.unsplash.com/photo-1597950228812-78d10d655649?q=80&w=2070" }
+                    { name: "Chest Area", price: "₹3,000 + GST", offer: "20% Off", desc: "Defined contouring and hair reduction for the chest area.", img: "https://images.unsplash.com/photo-1597950228812-78d10d655649?q=80&w=2070" },
+                    { name: "Male Chest Area", price: "₹4,000 + GST", offer: "20% Off", desc: "Specialized high-density laser reduction for male chest hair.", img: "https://images.unsplash.com/photo-1597950228812-78d10d655649?q=80&w=2070" },
+                    { name: "Abdomen", price: "₹4,000 + GST", offer: "20% Off", desc: "Effective hair reduction for the stomach area.", img: "https://images.unsplash.com/photo-1574673645642-46321287e076?q=80&w=2070" },
+                    { name: "Back", price: "₹6,000 + GST", offer: "20% Off", desc: "Full back hair reduction for a clean aesthetic.", img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070" },
+                    { name: "MNRF Treatment", price: "₹5,000 + GST", offer: "20% Off", desc: "Microneedling Radio Frequency treatment for skin tightening and scar reduction.", img: "https://images.unsplash.com/photo-1614859324967-bda6e26b2197?q=80&w=2070" }
                 ]
             },
             pigmentation: {
@@ -1163,6 +1174,9 @@
                 icon: "fa-regular fa-sun",
                 items: [
                     { name: "Laser Toning (Face)", price: "₹4,000 + GST", offer: "20% Off", desc: "Q-switched laser treatment to break down pigmentation, treating acne scars and uneven skin tone.", img: "https://images.unsplash.com/photo-1552693673-1bf958298935?q=80&w=2073" },
+                    { name: "Laser Toning (Face & Neck)", price: "₹6,000 + GST", offer: "20% Off", desc: "Comprehensive toning treatment covering both face and neck areas.", img: "https://images.unsplash.com/photo-1609496156938-2df55167664c?q=80&w=2069" },
+                    { name: "Pigmentation Treatment", price: "₹4,000 + GST", offer: "20% Off", desc: "Targeted therapy for dark spots and sun damage.", img: "https://images.unsplash.com/photo-1598440947619-2c35fc9b90aa?q=80&w=2070" },
+                    { name: "Long Area Toning", price: "₹6,000 + GST", offer: "20% Off", desc: "Laser toning for larger body areas to even out skin tone.", img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070" },
                     { name: "Melasma Treatment", price: "₹4,000 + GST", offer: "20% Off", desc: "Specialized protocol targeting deep dermal pigmentation and hormonal melanin deposits.", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070" },
                     { name: "Tattoo Removal", price: "Starting ₹1,500 + GST", offer: "20% Off", desc: "Safe removal of unwanted tattoos using high-intensity light beams to break up ink particles.", img: "https://images.unsplash.com/photo-1595475207225-428b62bda831?q=80&w=2080" }
                 ]
@@ -1171,9 +1185,11 @@
                 title: "Facials",
                 icon: "fa-solid fa-spa",
                 items: [
-                    { name: "Hydrafacial", price: "₹6,000 + GST", offer: "20% Off", desc: "The ultimate 3-step facial: Cleanse, Exfoliate, and Infuse with intensive serums.", img: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=2070" },
+                    { name: "Hydrafacial (Face)", price: "₹6,000 + GST", offer: "20% Off", desc: "The ultimate 3-step facial: Cleanse, Exfoliate, and Infuse with intensive serums.", img: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=2070" },
+                    { name: "Hydrafacial (Face + Neck)", price: "₹8,000 + GST", offer: "20% Off", desc: "Extended Hydrafacial treatment covering the neck area for uniform radiance.", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070" },
+                    { name: "Mesofacial (Face)", price: "₹6,000 + GST", offer: "20% Off", desc: "Deep delivery of vitamins and antioxidants into the skin layers.", img: "https://images.unsplash.com/photo-1598440947619-2c35fc9b90aa?q=80&w=2070" },
                     { name: "Korean Glass Skin", price: "₹5,000 + GST", offer: "20% Off", desc: "Our signature protocol combining hydration, vitamins, and mild exfoliation for a translucent, glass-like glow.", img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070" },
-                    { name: "PRP Vampire Facial", price: "₹5,000 + GST", offer: "20% Off", desc: "Microneedling combined with PRP to stimulate collagen production and skin renewal.", img: "https://images.unsplash.com/photo-1598440947619-2c35fc9b90aa?q=80&w=2070" },
+                    { name: "PRP Vampire Facial", price: "₹5,000 + GST", offer: "", desc: "Microneedling combined with PRP to stimulate collagen production and skin renewal.", img: "https://images.unsplash.com/photo-1598440947619-2c35fc9b90aa?q=80&w=2070" },
                     { name: "Korean Facial", price: "₹4,000 + GST", offer: "20% Off", desc: "A multi-step regimen focusing on deep hydration and barrier repair.", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070" }
                 ]
             },
@@ -1182,18 +1198,23 @@
                 icon: "fa-solid fa-flask",
                 items: [
                     { name: "Yellow Peel", price: "₹3,000 + GST", offer: "20% Off", desc: "A progressive peel containing Retinoic Acid to treat acne, pigmentation, and photo-aging.", img: "https://images.unsplash.com/photo-1608248597279-f99d160bfbc8?q=80&w=2070" },
-                    { name: "Body Peel", price: "Starting ₹1,500", offer: "20% Off", desc: "Exfoliating treatments for body areas (Back, Arms) to remove tan and improve texture.", img: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=2073" },
-                    { name: "Eye Peels", price: "₹3,000 + GST", offer: "20% Off", desc: "Gentle chemical exfoliation specifically safe for the delicate under-eye area to treat dark circles.", img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070" }
+                    { name: "Body Peel", price: "Starting ₹1,500", offer: "20% Off", desc: "Exfoliating treatments for body areas to remove tan and improve texture.", img: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=2073" },
+                    { name: "Eye Peels (Dark Circle)", price: "₹3,000 + GST", offer: "20% Off", desc: "Gentle chemical exfoliation safe for the delicate under-eye area.", img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070" },
+                    { name: "Back Peel", price: "₹4,000", offer: "20% Off", desc: "Targeted peel for the back to clear acne marks and pigmentation.", img: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=2073" },
+                    { name: "Underarms Peel", price: "₹2,000 + GST", offer: "20% Off", desc: "Brightening peel specifically for the underarm area.", img: "https://images.unsplash.com/photo-1505944270255-72b8c68c6a70?q=80&w=2070" },
+                    { name: "Face Melasma Peel", price: "₹3,000 + GST", offer: "20% Off", desc: "Specialized peel to reduce melasma patches on the face.", img: "https://images.unsplash.com/photo-1552693673-1bf958298935?q=80&w=2073" },
+                    { name: "Lip Peel", price: "₹1,500 + GST", offer: "20% Off", desc: "Gentle exfoliation to lighten pigmented lips.", img: "https://images.unsplash.com/photo-1629424610217-64906d4e51ce?q=80&w=2070" }
                 ]
             },
             injectables: {
                 title: "Injectables",
                 icon: "fa-solid fa-syringe",
                 items: [
-                    { name: "GFC Face", price: "₹3,000 + GST", offer: "20% Off", desc: "Facial rejuvenation utilizing your own growth factors for tightening and brightness.", img: "https://images.unsplash.com/photo-1579165466741-7f35a4755657?q=80&w=2079" },
+                    { name: "GFC Face", price: "₹5,000 + GST", offer: "", desc: "Facial rejuvenation utilizing your own growth factors for tightening and brightness.", img: "https://images.unsplash.com/photo-1579165466741-7f35a4755657?q=80&w=2079" },
                     { name: "Botox", price: "₹300 / Unit", offer: "20% Off", desc: "FDA-approved neuromodulator to smooth dynamic wrinkles and fine lines.", img: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?q=80&w=2070" },
-                    { name: "IV Glutathione", price: "₹1,700 / Session", offer: "20% Off", desc: "Intravenous antioxidant therapy for systemic skin brightening and detoxification.", img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080" },
-                    { name: "Under Eye HanHeal", price: "₹10,000 + GST", offer: "20% Off", desc: "Specialized filler treatment to restore volume and reduce hollows under the eyes.", img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070" }
+                    { name: "IV Glutathione", price: "₹1,700 / Session", offer: "20% Off", desc: "Includes ₹1500 for therapy + ₹200 consumables. Systemic skin brightening.", img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080" },
+                    { name: "IPRF Injections", price: "₹5,000 + GST", offer: "20% Off", desc: "Injectable Platelet Rich Fibrin for advanced tissue regeneration.", img: "https://images.unsplash.com/photo-1516069677934-cc330058e577?q=80&w=2070" },
+                    { name: "Under Eye Injections", price: "₹10,000 + GST", offer: "20% Off", desc: "Specialized treatment for dark circles and filling hollows.", img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070" }
                 ]
             }
         };
