@@ -145,7 +145,7 @@
         /* --- HERO SECTION --- */
         .hero {
             min-height: 85vh; display: flex; align-items: center; padding: 2rem 8%;
-            background: linear-gradient(to right, rgba(255,255,255,0.95) 40%, rgba(255,255,255,0.3)), url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070&auto=format&fit=crop');
+            background: linear-gradient(to right, rgba(255,255,255,0.95) 40%, rgba(255,255,255,0.3)), url('hero.png');
             background-size: cover; background-position: center; background-repeat: no-repeat;
         }
         .hero-content { max-width: 650px; }
@@ -411,9 +411,27 @@
             .about-images { grid-template-columns: 1fr; margin-bottom: 2rem; }
             .about-images img:nth-child(2) { margin-top: 0; }
 
-            /* Mission & Vision Mobile (Stack them) */
+            /* Mission & Vision Mobile */
             .mv-grid-container { grid-template-columns: 1fr; }
-            .values-row { justify-content: center; }
+
+            /* FIX: Force 2 columns for Values and Treatment Categories */
+            .values-row, .category-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr; /* Exactly 2 columns */
+                gap: 10px;
+                justify-content: center;
+            }
+
+            /* Override widths so they fit in the grid cells */
+            .value-item {
+                min-width: 0; /* Removes the 150px restriction */
+                width: auto;
+                max-width: none;
+            }
+            .cat-tab {
+                width: 100%; /* Removes the fixed 140px restriction */
+                padding: 1rem 0.5rem; /* Slightly reduced padding */
+            }
 
             /* Services Mobile */
             .services-content-wrapper { flex-direction: column; }
@@ -562,8 +580,8 @@
     <section id="about" class="about-section">
         <img src="logo.png" alt="Watermark" class="watermark-logo">
         <div class="about-images">
-            <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070&auto=format&fit=crop" alt="Modern clinic interior">
-            <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?q=80&w=2073&auto=format&fit=crop" alt="Skincare treatment">
+            <img src="melasma.jpg" alt="Modern clinic interior">
+            <img src="botox1.jpg" alt="Skincare treatment">
         </div>
         <div class="about-text">
             <h2>Every skin has a <span class="gold-text">story.</span></h2>
@@ -749,55 +767,56 @@
             hair: {
                 title: "Hair Treatments", icon: "fa-solid fa-leaf", image: "hair_treatment.png",
                 items: [
-                    { name: "PRP Therapy", price: "₹3,000", offer: "", desc: "PRP therapy uses concentrated platelets derived from your own blood to stimulate dormant hair follicles." },
-                    { name: "GFC Treatment", price: "₹4,000", offer: "", desc: "Growth Factor Concentrate therapy utilizes purified growth factors obtained from your blood to promote hair regeneration." },
-                    { name: "Mesotherapy", price: "₹3,500 / Session", offer: "20% Off", desc: "Mesotherapy involves micro-injections of vitamins, amino acids, and minerals directly into the scalp." },
-                    { name: "Hair Filler", price: "₹7,500 + GST", offer: "20% Off", desc: "Hair fillers contain biomimetic peptides that stimulate scalp circulation and strengthen hair shafts." }
+                    { name: "PRP Therapy", price: "₹3,000", offer: "", desc: "PRP therapy utilizes concentrated platelets derived from your own blood to naturally stimulate dormant hair follicles. By releasing essential growth factors, it supports tissue repair and strengthens existing hair. The procedure is minimally invasive and focuses on revitalizing the scalp's health to encourage new growth." },
+                    { name: "GFC Treatment", price: "₹4,000", offer: "", desc: "Growth Factor Concentrate (GFC) therapy is an advanced non-surgical treatment that uses highly concentrated growth factors derived from your own platelets. These activated factors are injected directly into the hair roots to reduce hair fall and stimulate robust regrowth. It is designed to provide superior results by delivering a pure preparation of growth factors." },
+                    { name: "Mesotherapy", price: "₹3,500 / Session", offer: "20% Off", desc: "Mesotherapy involves the micro-injection of a nutrient-rich cocktail containing vitamins, minerals, and amino acids directly into the scalp. This targeted approach nourishes hair follicles, improves blood circulation, and helps neutralize the effects of hair-thinning hormones. It effectively creates a favorable environment for healthier, thicker hair." },
+                    { name: "Hair Filler", price: "₹7,500 + GST", offer: "20% Off", desc: "Hair fillers are an injectable treatment containing a complex of biomimetic peptides and hyaluronic acid designed to revitalize the scalp. This formulation promotes blood circulation in the hair follicles and increases the thickness of the hair shaft. It is particularly effective for arresting hair fall and improving the overall volume of thinning hair." }
                 ]
             },
             laser: {
                 title: "Laser Hair Reduction", icon: "fa-solid fa-bolt", image: "Laser_Hair_Removal.jpg",
                 items: [
-                    { name: "Face Laser Hair Reduction", price: "₹3,500 + GST", offer: "20% Off", desc: "Laser hair reduction uses medical-grade laser energy to selectively damage hair follicles." },
-                    { name: "Underarm Laser Hair Reduction", price: "₹2,000 + GST", offer: "20% Off", desc: "This treatment targets hair follicles in the underarm region using controlled laser energy." },
-                    { name: "Full Body Laser Hair Reduction", price: "₹20,000 + GST", offer: "20% Off", desc: "Full body laser hair reduction provides comprehensive treatment for unwanted hair across multiple body areas." }
+                    { name: "Face Laser Hair Reduction", price: "₹3,500 + GST", offer: "20% Off", desc: "This procedure uses precise medical-grade laser energy to target melanin in hair follicles, inhibiting their ability to grow without damaging the surrounding skin. It offers a long-term solution for unwanted facial hair, resulting in smoother skin and a significant reduction in ingrown hairs. Multiple sessions ensure that hair is treated during its active growth phase." },
+                    { name: "Underarm Laser Hair Reduction", price: "₹2,000 + GST", offer: "20% Off", desc: "Targeting coarse hair in the underarm region, this treatment uses controlled laser pulses to destroy the hair root while preserving skin safety. It effectively reduces hair density and thickness, leaving the underarm area smooth and free from the irritation often caused by waxing or shaving. Over time, it also helps in improving skin texture in the treated area." },
+                    { name: "Full Body Laser Hair Reduction", price: "₹20,000 + GST", offer: "20% Off", desc: "Full body laser hair reduction offers a comprehensive approach to managing unwanted hair across multiple body areas simultaneously. By utilizing advanced laser technology, it provides a safe, fast, and comfortable experience with lasting results. This treatment eliminates the need for frequent grooming routines, leaving your skin consistently smooth." }
                 ]
             },
             pigmentation: {
                 title: "PICO & Pigmentation", icon: "fa-regular fa-sun", image: "pico.jpg",
                 items: [
-                    { name: "Laser Toning", price: "₹4,000 + GST", offer: "20% Off", desc: "Laser toning uses low-fluence laser energy to break down excess melanin in the skin." },
-                    { name: "Melasma Treatment", price: "₹4,000 + GST", offer: "20% Off", desc: "Melasma treatment involves a combination of medical peels, lasers, and topical therapy." },
-                    { name: "Tattoo Removal", price: "Starting ₹1,500 + GST", offer: "20% Off", desc: "Laser tattoo removal uses high-intensity laser pulses to fragment tattoo pigments." }
+                    { name: "Laser Toning", price: "₹4,000 + GST", offer: "20% Off", desc: "Laser toning employs low-fluence laser energy to gently break down excessive melanin deposits deep within the skin without causing surface damage. This process helps to even out skin tone, reduce patchy pigmentation, and stimulate collagen production. It is a comfortable procedure with no downtime, making it ideal for gradual skin brightening." },
+                    { name: "Melasma Treatment", price: "₹4,000 + GST", offer: "20% Off", desc: "Managing melasma requires a multi-modal approach, often combining specialized medical peels, low-energy lasers, and targeted topical therapies. This treatment protocol is designed to regulate pigment production and exfoliate existing dark patches safely. The goal is to achieve a clearer complexion while minimizing the risk of recurrence." },
+                    { name: "Tattoo Removal", price: "Starting ₹1,500 + GST", offer: "20% Off", desc: "Our laser tattoo removal utilizes high-intensity light pulses to shatter ink particles into tiny fragments, which are then naturally eliminated by the body. The technology is adjustable to target specific ink colors and depths while protecting the surrounding skin tissue. Complete removal or significant fading typically requires a series of sessions." }
                 ]
             },
             facials: {
                 title: "Facials", icon: "fa-solid fa-spa", image: "facial.jpg",
                 items: [
-                    { name: "Hydrafacial", price: "₹6,000 + GST", offer: "20% Off", desc: "Hydrafacial is a multi-step medical facial that cleanses, exfoliates, and hydrates the skin." },
-                    { name: "Korean Glass Skin Facial", price: "₹5,000 + GST", offer: "20% Off", desc: "This treatment focuses on intensive hydration, gentle exfoliation, and skin barrier repair." },
-                    { name: "PRP Vampire Facial", price: "₹5,000 + GST", offer: "", desc: "PRP Vampire Facial combines microneedling with platelet-rich plasma derived from your blood." }
+                    { name: "Hydrafacial", price: "₹6,000 + GST", offer: "20% Off", desc: "Hydrafacial is a non-invasive, multi-step medical facial that combines cleansing, exfoliation, extraction, and hydration. It uses a patented vortex technology to remove impurities from pores while simultaneously infusing the skin with moisturizing serums. The result is an instant, noticeable glow and improved skin texture with zero downtime." },
+                    { name: "Korean Glass Skin Facial", price: "₹5,000 + GST", offer: "20% Off", desc: "Inspired by Korean skincare philosophies, this treatment focuses on achieving a translucent, luminous complexion through intensive hydration and barrier repair. It combines gentle exfoliation with deep infusion of hyaluronic acid and vitamins to plump the skin. The result is a 'glass-like' sheen that signifies deeply moisturized and healthy skin." },
+                    { name: "PRP Vampire Facial", price: "₹5,000 + GST", offer: "", desc: "The Vampire Facial synergizes the collagen-inducing benefits of microneedling with the healing power of your own Platelet-Rich Plasma (PRP). The micro-injuries create channels for the PRP to penetrate deeply, accelerating tissue repair and stimulating new collagen and elastin. This helps in reducing fine lines and acne scars, leading to firmer, rejuvenated skin." }
                 ]
             },
             peels: {
                 title: "Peels & Body", icon: "fa-solid fa-flask", image: "peels.jpg",
                 items: [
-                    { name: "Yellow Peel", price: "₹3,000 + GST", offer: "20% Off", desc: "Yellow Peel is a medical-grade chemical peel formulated with retinoic acid and antioxidants." },
-                    { name: "Body Peel", price: "Starting ₹1,500", offer: "20% Off", desc: "Body peels exfoliate and rejuvenate larger skin areas affected by tanning and rough texture." },
-                    { name: "Eye Peels", price: "₹3,000 + GST", offer: "20% Off", desc: "Eye peels use gentle chemical formulations suitable for the delicate under-eye area." },
-                    { name: "Back Peel", price: "₹4,000", offer: "20% Off", desc: "Back peel treatments target acne marks and pigmentation on the back." },
-                    { name: "Underarms Peel", price: "₹2,000 + GST", offer: "20% Off", desc: "Underarm peels help lighten pigmentation caused by shaving or friction." },
-                    { name: "Face Melasma Peel", price: "₹3,000 + GST", offer: "20% Off", desc: "This peel is designed to treat melasma and stubborn facial pigmentation." },
-                    { name: "Lip Peel", price: "₹1,500 + GST", offer: "20% Off", desc: "Lip peels gently exfoliate pigmented lips and improve smoothness." }
+                    { name: "Yellow Peel", price: "₹3,000 + GST", offer: "20% Off", desc: "The Yellow Peel is a progressive medical-grade peel formulated with retinoic acid, phytic acid, and antioxidants. It works by increasing skin turnover to effectively treat pigmentation, sun damage, and fine lines. Unlike harsher peels, it offers a controlled exfoliation process that revitalizes the skin's deeper layers." },
+                    { name: "Body Peel", price: "Starting ₹1,500", offer: "20% Off", desc: "Designed for tougher skin on the body, this chemical peel exfoliates dead skin cells to reveal a smoother, more even-toned layer underneath. It is particularly effective for treating sun tan, keratosis pilaris (chicken skin), and rough texture on the arms or legs. Regular treatments help in improving overall skin radiance." },
+                    { name: "Eye Peels", price: "₹3,000 + GST", offer: "20% Off", desc: "This specialized peel utilizes mild chemical formulations specifically safe for the delicate and thin skin around the eyes. It targets hyperpigmentation (dark circles) and softens fine lines by gently exfoliating the surface layer. The treatment helps to refresh the under-eye area, making it look less tired." },
+                    { name: "Back Peel", price: "₹4,000", offer: "20% Off", desc: "This treatment targets back acne, post-inflammatory hyperpigmentation, and uneven texture. By applying a specialized chemical solution, it unclogs pores, reduces active acne, and fades lingering dark spots. It is an essential treatment for clarifying the skin and restoring confidence in open-back clothing." },
+                    { name: "Underarms Peel", price: "₹2,000 + GST", offer: "20% Off", desc: "Underarm peels are designed to lighten hyperpigmentation caused by friction, deodorants, or hormonal factors. The peel gently exfoliates the darkened top layer of skin, promoting the growth of fresh, lighter skin cells. This treatment also helps in smoothing out rough texture." },
+                    { name: "Face Melasma Peel", price: "₹3,000 + GST", offer: "20% Off", desc: "This targeted chemical peel is formulated to penetrate the epidermis and address the stubborn pigmentation associated with melasma. By accelerating cell turnover, it lifts excess pigment and suppresses the activity of melanocytes. It is a crucial component in managing chronic pigmentation issues." },
+                    { name: "Lip Peel", price: "₹1,500 + GST", offer: "20% Off", desc: "A lip peel involves the application of safe, food-grade acids to gently exfoliate dry, chapped, or pigmented skin on the lips. It helps to remove dead skin accumulation and lighten darkness caused by sun exposure or smoking. The result is softer, smoother lips with a natural, healthy pink tint." }
                 ]
             },
             injectables: {
                 title: "Injectables", icon: "fa-solid fa-syringe", image: "injectables.jpg",
                 items: [
-                    { name: "Botox", price: "₹300 / Unit", offer: "20% Off", desc: "Botox is a purified neuromodulator used to relax overactive facial muscles." },
-                    { name: "Under Eye Injections", price: "₹10,000 + GST", offer: "20% Off", desc: "Under eye injections are used to improve hollowness, dark circles, and tired appearance." }
+                    { name: "Botox", price: "₹300 / Unit", offer: "20% Off", desc: "Botox is a purified protein neuromodulator that temporarily relaxes the specific facial muscles responsible for causing dynamic wrinkles. It is most commonly used to smooth forehead lines, crow's feet, and frown lines. The treatment is quick, precise, and preserves natural facial expressions when administered by experts." },
+                    { name: "Under Eye Injections", price: "₹10,000 + GST", offer: "20% Off", desc: "This treatment uses hyaluronic acid-based dermal fillers to address volume loss and hollowness in the tear trough area. By carefully replenishing lost volume, it reduces the shadow effect that creates dark circles and a tired appearance. The result is an instantly refreshed and rested look." }
                 ]
             }
+        
         };
 
         // --- POPUP LOGIC ---
