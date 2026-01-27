@@ -482,10 +482,13 @@
             
             /* Footer Brand: Fix to be Side-by-Side */
             .footer-brand { 
-                flex-direction: row; 
-                justify-content: center; 
-                gap: 15px;
-            }
+            display: flex;
+            flex-direction: row; 
+            justify-content: flex-start; /
+            align-items: center;
+            gap: 12px; 
+            width: 100%;
+        }
             
             .footer-contact { text-align: center; align-items: center; width: 100%; }
             .footer-contact-block { align-items: center; }
@@ -505,7 +508,7 @@
             <h2 style="font-size: 1.8rem;">Valid till Jan 31st</h2>
             <div class="divider divider-center"></div>
             <p>Experience premium care at The Skin Life. Book your appointment today.</p>
-            <a href="https://wa.me/919544136666?text=Hello%2C%20I%20would%20like%20to%20claim%20the%2020%25%20Launch%20Offer." class="btn btn-gold" onclick="closePopup('offerPopup')">Claim Now</a>
+            <a href="https://wa.me/919746698366?text=Hello%2C%20I%20would%20like%20to%20claim%20the%2020%25%20Launch%20Offer." class="btn btn-gold" onclick="closePopup('offerPopup')">Claim Now</a>
         </div>
     </div>
 
@@ -528,7 +531,7 @@
                     <p>With over 8 years of experience as a Senior SICU Medical Officer at <strong>Rajagiri Hospital</strong>, she possesses deep medical expertise. She further specialized by completing a Certificate Course in Palliative Medicine from Gov. District Hospital, Ernakulam.</p>
                     <p>Her passion for aesthetics led her to pursue a <strong>Fellowship in Aesthetic Medicine</strong> from the prestigious American Academy of Aesthetic Medicine (AAAM), Dubai, and a <strong>Diploma in Aesthetic Medicine and Cosmetology</strong> from IATAM, Hyderabad.</p>
                 </div>
-                <a href="https://wa.me/919544136666?text=Hello%2C%20I%20would%20like%20to%20book%20a%20consultation%20with%20Dr.%20Geethu." class="btn btn-gold" style="margin-top: 1rem;">Book Consultation</a>
+                <a href="https://wa.me/919746698366?text=Hello%2C%20I%20would%20like%20to%20book%20a%20consultation%20with%20Dr.%20Geethu." class="btn btn-gold" style="margin-top: 1rem;">Book Consultation</a>
             </div>
         </div>
     </div>
@@ -730,13 +733,13 @@
                         <a href="tel:+919746698366" class="contact-link-wrapper">
                             <div class="contact-row">
                                 <i class="fas fa-phone-alt inverted-icon"></i>
-                                <span>+91 97466 98366</span>
+                                <span>+91 97466 98366, +91 95441 36666</span>
                             </div>
                         </a>
-                        <a href="https://wa.me/919544136666?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20an%20appointment%20at%20The%20Skin%20Life." target="_blank" class="contact-link-wrapper">
+                        <a href="https://wa.me/919746698366?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20an%20appointment%20at%20The%20Skin%20Life." target="_blank" class="contact-link-wrapper">
                             <div class="contact-row">
                                 <i class="fab fa-whatsapp"></i>
-                                <span>+91 95441 36666</span>
+                                <span>+91 97466 98366</span>
                             </div>
                         </a>
                         <a href="mailto:theskinlife2025@gmail.com?subject=Inquiry%20from%20Website&body=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20treatments." class="contact-link-wrapper">
@@ -769,51 +772,52 @@
                 items: [
                     { name: "PRP Therapy", price: "₹3,000", offer: "", desc: "PRP therapy utilizes concentrated platelets derived from your own blood to naturally stimulate dormant hair follicles. By releasing essential growth factors, it supports tissue repair and strengthens existing hair. The procedure is minimally invasive and focuses on revitalizing the scalp's health to encourage new growth." },
                     { name: "GFC Treatment", price: "₹4,000", offer: "", desc: "Growth Factor Concentrate (GFC) therapy is an advanced non-surgical treatment that uses highly concentrated growth factors derived from your own platelets. These activated factors are injected directly into the hair roots to reduce hair fall and stimulate robust regrowth. It is designed to provide superior results by delivering a pure preparation of growth factors." },
-                    { name: "Mesotherapy", price: "₹3,500 / Session", offer: "20% Off", desc: "Mesotherapy involves the micro-injection of a nutrient-rich cocktail containing vitamins, minerals, and amino acids directly into the scalp. This targeted approach nourishes hair follicles, improves blood circulation, and helps neutralize the effects of hair-thinning hormones. It effectively creates a favorable environment for healthier, thicker hair." },
-                    { name: "Hair Filler", price: "₹7,500 + GST", offer: "20% Off", desc: "Hair fillers are an injectable treatment containing a complex of biomimetic peptides and hyaluronic acid designed to revitalize the scalp. This formulation promotes blood circulation in the hair follicles and increases the thickness of the hair shaft. It is particularly effective for arresting hair fall and improving the overall volume of thinning hair." }
+                    { name: "Mesotherapy", price: "₹3,500 / Session", offer: "", desc: "Mesotherapy involves the micro-injection of a nutrient-rich cocktail containing vitamins, minerals, and amino acids directly into the scalp. This targeted approach nourishes hair follicles, improves blood circulation, and helps neutralize the effects of hair-thinning hormones. It effectively creates a favorable environment for healthier, thicker hair." },
+                    { name: "Hair Filler", price: "₹7,500 + GST", offer: "", desc: "Hair fillers are an injectable treatment containing a complex of biomimetic peptides and hyaluronic acid designed to revitalize the scalp. This formulation promotes blood circulation in the hair follicles and increases the thickness of the hair shaft. It is particularly effective for arresting hair fall and improving the overall volume of thinning hair." }
                 ]
             },
             laser: {
                 title: "Laser Hair Reduction", icon: "fa-solid fa-bolt", image: "Laser_Hair_Removal.jpg",
                 items: [
-                    { name: "Face Laser Hair Reduction", price: "₹3,500 + GST", offer: "20% Off", desc: "This procedure uses precise medical-grade laser energy to target melanin in hair follicles, inhibiting their ability to grow without damaging the surrounding skin. It offers a long-term solution for unwanted facial hair, resulting in smoother skin and a significant reduction in ingrown hairs. Multiple sessions ensure that hair is treated during its active growth phase." },
-                    { name: "Underarm Laser Hair Reduction", price: "₹2,000 + GST", offer: "20% Off", desc: "Targeting coarse hair in the underarm region, this treatment uses controlled laser pulses to destroy the hair root while preserving skin safety. It effectively reduces hair density and thickness, leaving the underarm area smooth and free from the irritation often caused by waxing or shaving. Over time, it also helps in improving skin texture in the treated area." },
-                    { name: "Full Body Laser Hair Reduction", price: "₹20,000 + GST", offer: "20% Off", desc: "Full body laser hair reduction offers a comprehensive approach to managing unwanted hair across multiple body areas simultaneously. By utilizing advanced laser technology, it provides a safe, fast, and comfortable experience with lasting results. This treatment eliminates the need for frequent grooming routines, leaving your skin consistently smooth." }
+                    { name: "Face Laser Hair Reduction", price: "₹3,500 + GST", offer: "", desc: "This procedure uses precise medical-grade laser energy to target melanin in hair follicles, inhibiting their ability to grow without damaging the surrounding skin. It offers a long-term solution for unwanted facial hair, resulting in smoother skin and a significant reduction in ingrown hairs. Multiple sessions ensure that hair is treated during its active growth phase." },
+                    { name: "Underarm Laser Hair Reduction", price: "₹2,000 + GST", offer: "", desc: "Targeting coarse hair in the underarm region, this treatment uses controlled laser pulses to destroy the hair root while preserving skin safety. It effectively reduces hair density and thickness, leaving the underarm area smooth and free from the irritation often caused by waxing or shaving. Over time, it also helps in improving skin texture in the treated area." },
+                    { name: "Full Body Laser Hair Reduction", price: "₹20,000 + GST", offer: "", desc: "Full body laser hair reduction offers a comprehensive approach to managing unwanted hair across multiple body areas simultaneously. By utilizing advanced laser technology, it provides a safe, fast, and comfortable experience with lasting results. This treatment eliminates the need for frequent grooming routines, leaving your skin consistently smooth." }
                 ]
             },
             pigmentation: {
                 title: "PICO & Pigmentation", icon: "fa-regular fa-sun", image: "pico.jpg",
                 items: [
-                    { name: "Laser Toning", price: "₹4,000 + GST", offer: "20% Off", desc: "Laser toning employs low-fluence laser energy to gently break down excessive melanin deposits deep within the skin without causing surface damage. This process helps to even out skin tone, reduce patchy pigmentation, and stimulate collagen production. It is a comfortable procedure with no downtime, making it ideal for gradual skin brightening." },
-                    { name: "Melasma Treatment", price: "₹4,000 + GST", offer: "20% Off", desc: "Managing melasma requires a multi-modal approach, often combining specialized medical peels, low-energy lasers, and targeted topical therapies. This treatment protocol is designed to regulate pigment production and exfoliate existing dark patches safely. The goal is to achieve a clearer complexion while minimizing the risk of recurrence." },
-                    { name: "Tattoo Removal", price: "Starting ₹1,500 + GST", offer: "20% Off", desc: "Our laser tattoo removal utilizes high-intensity light pulses to shatter ink particles into tiny fragments, which are then naturally eliminated by the body. The technology is adjustable to target specific ink colors and depths while protecting the surrounding skin tissue. Complete removal or significant fading typically requires a series of sessions." }
+                    { name: "Laser Toning", price: "₹4,000 + GST", offer: "", desc: "Laser toning employs low-fluence laser energy to gently break down excessive melanin deposits deep within the skin without causing surface damage. This process helps to even out skin tone, reduce patchy pigmentation, and stimulate collagen production. It is a comfortable procedure with no downtime, making it ideal for gradual skin brightening." },
+                    { name: "Melasma & Pigmentation", price: "₹4,000 + GST", offer: "", desc: "Managing melasma requires a multi-modal approach, often combining specialized medical peels, low-energy lasers, and targeted topical therapies. This treatment protocol is designed to regulate pigment production and exfoliate existing dark patches safely. The goal is to achieve a clearer complexion while minimizing the risk of recurrence." },
+                    { name: "Tattoo Removal", price: "Starting ₹1,500 + GST", offer: "", desc: "Our laser tattoo removal utilizes high-intensity light pulses to shatter ink particles into tiny fragments, which are then naturally eliminated by the body. The technology is adjustable to target specific ink colors and depths while protecting the surrounding skin tissue. Complete removal or significant fading typically requires a series of sessions." }
                 ]
             },
             facials: {
                 title: "Facials", icon: "fa-solid fa-spa", image: "facial.jpg",
                 items: [
-                    { name: "Hydrafacial", price: "₹6,000 + GST", offer: "20% Off", desc: "Hydrafacial is a non-invasive, multi-step medical facial that combines cleansing, exfoliation, extraction, and hydration. It uses a patented vortex technology to remove impurities from pores while simultaneously infusing the skin with moisturizing serums. The result is an instant, noticeable glow and improved skin texture with zero downtime." },
-                    { name: "Korean Glass Skin Facial", price: "₹5,000 + GST", offer: "20% Off", desc: "Inspired by Korean skincare philosophies, this treatment focuses on achieving a translucent, luminous complexion through intensive hydration and barrier repair. It combines gentle exfoliation with deep infusion of hyaluronic acid and vitamins to plump the skin. The result is a 'glass-like' sheen that signifies deeply moisturized and healthy skin." },
+                    { name: "Hydrafacial", price: "₹6,000 + GST", offer: "", desc: "Hydrafacial is a non-invasive, multi-step medical facial that combines cleansing, exfoliation, extraction, and hydration. It uses a patented vortex technology to remove impurities from pores while simultaneously infusing the skin with moisturizing serums. The result is an instant, noticeable glow and improved skin texture with zero downtime." },
+                    { name: "Korean Glass Skin Facial", price: "₹5,000 + GST", offer: "", desc: "Inspired by Korean skincare philosophies, this treatment focuses on achieving a translucent, luminous complexion through intensive hydration and barrier repair. It combines gentle exfoliation with deep infusion of hyaluronic acid and vitamins to plump the skin. The result is a 'glass-like' sheen that signifies deeply moisturized and healthy skin." },
                     { name: "PRP Vampire Facial", price: "₹5,000 + GST", offer: "", desc: "The Vampire Facial synergizes the collagen-inducing benefits of microneedling with the healing power of your own Platelet-Rich Plasma (PRP). The micro-injuries create channels for the PRP to penetrate deeply, accelerating tissue repair and stimulating new collagen and elastin. This helps in reducing fine lines and acne scars, leading to firmer, rejuvenated skin." }
                 ]
             },
             peels: {
                 title: "Peels & Body", icon: "fa-solid fa-flask", image: "peels.jpg",
                 items: [
-                    { name: "Yellow Peel", price: "₹3,000 + GST", offer: "20% Off", desc: "The Yellow Peel is a progressive medical-grade peel formulated with retinoic acid, phytic acid, and antioxidants. It works by increasing skin turnover to effectively treat pigmentation, sun damage, and fine lines. Unlike harsher peels, it offers a controlled exfoliation process that revitalizes the skin's deeper layers." },
-                    { name: "Body Peel", price: "Starting ₹1,500", offer: "20% Off", desc: "Designed for tougher skin on the body, this chemical peel exfoliates dead skin cells to reveal a smoother, more even-toned layer underneath. It is particularly effective for treating sun tan, keratosis pilaris (chicken skin), and rough texture on the arms or legs. Regular treatments help in improving overall skin radiance." },
-                    { name: "Eye Peels", price: "₹3,000 + GST", offer: "20% Off", desc: "This specialized peel utilizes mild chemical formulations specifically safe for the delicate and thin skin around the eyes. It targets hyperpigmentation (dark circles) and softens fine lines by gently exfoliating the surface layer. The treatment helps to refresh the under-eye area, making it look less tired." },
-                    { name: "Back Peel", price: "₹4,000", offer: "20% Off", desc: "This treatment targets back acne, post-inflammatory hyperpigmentation, and uneven texture. By applying a specialized chemical solution, it unclogs pores, reduces active acne, and fades lingering dark spots. It is an essential treatment for clarifying the skin and restoring confidence in open-back clothing." },
-                    { name: "Underarms Peel", price: "₹2,000 + GST", offer: "20% Off", desc: "Underarm peels are designed to lighten hyperpigmentation caused by friction, deodorants, or hormonal factors. The peel gently exfoliates the darkened top layer of skin, promoting the growth of fresh, lighter skin cells. This treatment also helps in smoothing out rough texture." },
-                    { name: "Face Melasma Peel", price: "₹3,000 + GST", offer: "20% Off", desc: "This targeted chemical peel is formulated to penetrate the epidermis and address the stubborn pigmentation associated with melasma. By accelerating cell turnover, it lifts excess pigment and suppresses the activity of melanocytes. It is a crucial component in managing chronic pigmentation issues." },
-                    { name: "Lip Peel", price: "₹1,500 + GST", offer: "20% Off", desc: "A lip peel involves the application of safe, food-grade acids to gently exfoliate dry, chapped, or pigmented skin on the lips. It helps to remove dead skin accumulation and lighten darkness caused by sun exposure or smoking. The result is softer, smoother lips with a natural, healthy pink tint." }
+                    { name: "Yellow Peel", price: "₹5,000 + GST", offer: "", desc: "The Yellow Peel is a progressive medical-grade peel formulated with retinoic acid, phytic acid, and antioxidants. It works by increasing skin turnover to effectively treat pigmentation, sun damage, and fine lines. Unlike harsher peels, it offers a controlled exfoliation process that revitalizes the skin's deeper layers." },
+                    { name: "Body Peel", price: "Starting ₹1,500", offer: "", desc: "Designed for tougher skin on the body, this chemical peel exfoliates dead skin cells to reveal a smoother, more even-toned layer underneath. It is particularly effective for treating sun tan, keratosis pilaris (chicken skin), and rough texture on the arms or legs. Regular treatments help in improving overall skin radiance." },
+                    { name: "Eye Peel", price: "₹5,000 + GST", offer: "", desc: "This specialized peel utilizes mild chemical formulations specifically safe for the delicate and thin skin around the eyes. It targets hyperpigmentation (dark circles) and softens fine lines by gently exfoliating the surface layer. The treatment helps to refresh the under-eye area, making it look less tired." },
+                    { name: "Pigmentation Peel", price: "Starting ₹5,000", offer: "", desc: "This treatment targets back acne, post-inflammatory hyperpigmentation, and uneven texture. By applying a specialized chemical solution, it unclogs pores, reduces active acne, and fades lingering dark spots. It is an essential treatment for clarifying the skin and restoring confidence in open-back clothing." },
+                    { name: "Underarms Peel", price: "₹2,000 + GST", offer: "", desc: "Underarm peels are designed to lighten hyperpigmentation caused by friction, deodorants, or hormonal factors. The peel gently exfoliates the darkened top layer of skin, promoting the growth of fresh, lighter skin cells. This treatment also helps in smoothing out rough texture." },
+                    { name: "Face Melasma Peel", price: "₹5,000 + GST", offer: "", desc: "This targeted chemical peel is formulated to penetrate the epidermis and address the stubborn pigmentation associated with melasma. By accelerating cell turnover, it lifts excess pigment and suppresses the activity of melanocytes. It is a crucial component in managing chronic pigmentation issues." },
+                    { name: "Lip Peel", price: "₹3,000 + GST", offer: "", desc: "A lip peel involves the application of safe, food-grade acids to gently exfoliate dry, chapped, or pigmented skin on the lips. It helps to remove dead skin accumulation and lighten darkness caused by sun exposure or smoking. The result is softer, smoother lips with a natural, healthy pink tint." }
+                    { name: "Under Eye Dark Circle Peel", price: "₹7,500 + GST", offer: "", desc: "A high-potency treatment designed to target vascular and melanic dark circles. It uses a specialized blend of lactic and citric acids to thicken the delicate periocular skin, improve microcirculation, and significantly reduce deep-seated shadows for a brightened, awake appearance." },
                 ]
             },
             injectables: {
                 title: "Injectables", icon: "fa-solid fa-syringe", image: "injectables.jpg",
                 items: [
-                    { name: "Botox", price: "₹300 / Unit", offer: "20% Off", desc: "Botox is a purified protein neuromodulator that temporarily relaxes the specific facial muscles responsible for causing dynamic wrinkles. It is most commonly used to smooth forehead lines, crow's feet, and frown lines. The treatment is quick, precise, and preserves natural facial expressions when administered by experts." },
-                    { name: "Under Eye Injections", price: "₹10,000 + GST", offer: "20% Off", desc: "This treatment uses hyaluronic acid-based dermal fillers to address volume loss and hollowness in the tear trough area. By carefully replenishing lost volume, it reduces the shadow effect that creates dark circles and a tired appearance. The result is an instantly refreshed and rested look." }
+                    { name: "Botox", price: "₹300 / Unit", offer: "", desc: "Botox is a purified protein neuromodulator that temporarily relaxes the specific facial muscles responsible for causing dynamic wrinkles. It is most commonly used to smooth forehead lines, crow's feet, and frown lines. The treatment is quick, precise, and preserves natural facial expressions when administered by experts." },
+                    { name: "Under Eye Injections", price: "₹10,000 + GST", offer: "", desc: "This treatment uses hyaluronic acid-based dermal fillers to address volume loss and hollowness in the tear trough area. By carefully replenishing lost volume, it reduces the shadow effect that creates dark circles and a tired appearance. The result is an instantly refreshed and rested look." }
                 ]
             }
         
@@ -968,3 +972,4 @@
     </script>
 </body>
 </html>
+
